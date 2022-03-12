@@ -1,4 +1,4 @@
-#scripts
+# scripts
 
 bashrc configuration for pablowsky bot.
 
