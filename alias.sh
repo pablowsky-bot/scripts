@@ -4,3 +4,6 @@ alias remove_endline_spaces="sed -i 's/\s*$//'" # remove automatically spaces at
 alias cb='catkin build'
 alias cbt='catkin build --this'
 alias cap='pygmentize -g' # cat in colors, requires python-pygments installed
+
+# launch alias
+alias bringup='roslaunch pablowsky_bringup robot.launch'
