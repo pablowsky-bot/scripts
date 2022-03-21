@@ -1,0 +1,33 @@
+udev_rules
+==========
+
+Udev rules allow you to set appropiate permissions to the arduino and lidar (666) and to create symbolic links under:
+
+/dev/ttyUSB0 -> /dev/pablowsky/arduino
+
+and
+
+/dev/ttyUSB1 -> /dev/pablowsky/rplidar
+
+To make them, create a file under /etc/udev/rules.d/80-pablowsky.rules and copy the content below inside it:
+
+# ----------------
+
+# pablowsky bot udev rules
+
+# arduino
+SUBSYSTEM=="tty",ATTRS{idProduct}=="7523",ATTRS{idVendor}=="1a86",SYMLINK+="pablowsky/arduino",MODE="0666",GROUP="dialout"
+
+# lidar
+SUBSYSTEM=="tty",ATTRS{idProduct}=="ea60",ATTRS{idVendor}=="10c4",SYMLINK+="pablowsky/rplidar",MODE="0666",GROUP="dialout"
+
+# ----------------
+
+Then restart udev by doing:
+
+	sudo service udev restart
+
+Then unplug and plug both USB devices, check if it worked by doing:
+
+	ls /dev/pablowsky/arduino
+	ls /dev/pablowsky/rplidar
